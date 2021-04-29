@@ -271,7 +271,14 @@ namespace OPC.Data
         /// </summary>
         ~OpcGroup()
         {
-            InternalRemove(false);
+            try
+            {
+                InternalRemove(false);
+            }
+            catch
+            {
+                // ignored because server can be disconnected on GC Finalization
+            }
         }
 
         /// <summary>
@@ -801,7 +808,7 @@ namespace OPC.Data
         /// </summary>
         /// <param name="serverHandles">Server handles of OPC items to read</param>
         /// <param name="transactionID">The Client generated transaction ID. 
-        /// This is included in the ‘completion’ information provided to the OnWriteComplete.</param>
+        /// This is included in the ï¿½completionï¿½ information provided to the OnWriteComplete.</param>
         /// <param name="cancelID">Place to return a Server generated ID to be used in case
         /// the operation needs to be canceled.</param>
         /// <param name="errors">Errors</param>
@@ -828,9 +835,9 @@ namespace OPC.Data
         /// <param name="serverHandles">List of server items handles for the items to be written</param>
         /// <param name="values">List of values to be written. The value data types 
         /// are not required to match the requested or canonical item datatype but 
-        /// must be ‘convertible’ to the canonical type.</param>
+        /// must be ï¿½convertibleï¿½ to the canonical type.</param>
         /// <param name="transactionID">The Client generated transaction ID. 
-        /// This is included in the ‘completion’ information provided to the OnWriteComplete.</param>
+        /// This is included in the ï¿½completionï¿½ information provided to the OnWriteComplete.</param>
         /// <param name="cancelID">Place to return a Server generated ID to be used in case
         /// the operation needs to be canceled.</param>
         /// <param name="errors">Array of errors for each item - returned by the server.</param>
@@ -1034,7 +1041,15 @@ namespace OPC.Data
 
         void IDisposable.Dispose()
         {
-            InternalRemove(false);
+            try
+            {
+                InternalRemove(false);
+            }
+            catch
+            {
+                // ignored because server can be disconnected on GC Finalization
+            }
+
             IsDisposed = true;
             GC.SuppressFinalize(this);
         }
