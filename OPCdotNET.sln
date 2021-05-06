@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerInformation", "Exampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerList", "Examples\ServerList\ServerList.csproj", "{F9C08B2F-791E-42C6-A211-0F24455A657C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryOneItemProperty", "Examples\QueryOneItemProperty\QueryOneItemProperty.csproj", "{929711CD-DA8C-413C-9D79-76A3E2D4FE72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
