@@ -64,7 +64,14 @@ namespace OPC.Data
         /// </summary>
         ~OpcServer()
         {
-            InternalDisconnect();
+            try
+            {
+                InternalDisconnect();
+            }
+            catch
+            {
+                // ignored because server can be disconnected on GC Finalization
+            }
         }
 
         /// <summary>
